@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Bệnh gan</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
+                    <li class="breadcrumb-item">Dự đoán</li>
+                    <li class="breadcrumb-item active">Bệnh gan</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-md-8" style="float:none;margin:auto;">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Vui lòng điền thông tin phía dưới</h5>
+
+                            <form action="{% url 'healthApp:liver_predict' %}" method="post">
+                                {% csrf_token %}
+                                <div class="row mb-3">
+                                    <label for="Total Bilirubin" class="col-sm-4 col-form-label">Total Bilirubin</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Total_Bilirubin"
+                                               name="Total_Bilirubin" required="required"
+                                               placeholder="Enter the Total Bilirubin">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Direct_Bilirubin" class="col-sm-4 col-form-label">Direct
+                                        Bilirubin</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" step="any" id="Direct_Bilirubin"
+                                               name="Direct_Bilirubin" required="required"
+                                               placeholder="Enter the Direct_Bilirubin">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Alkaline_Phosphotase" class="col-sm-4 col-form-label">Alkaline
+                                        Phosphotase</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Alkaline_Phosphotase"
+                                               name="Alkaline_Phosphotase" required="required"
+                                               placeholder="Enter the Alkaline Phosphotase">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Alamine_Aminotransferase" class="col-sm-4 col-form-label">Alamine
+                                        Aminotransferase</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Alamine_Aminotransferase"
+                                               name="Alamine_Aminotransferase" required="required"
+                                               placeholder="Enter the Alamine Aminotransferase">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Total_Protiens" class="col-sm-4 col-form-label">Total Protiens</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Total_Protiens"
+                                               name="Total_Protiens" required="required"
+                                               placeholder="Enter the Total Protiens">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Albumin" class="col-sm-4 col-form-label">Albumin</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Albumin" name="Albumin"
+                                               required="required" placeholder="Enter the Albumin">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Albumin_and_Globulin_Ratio" class="col-sm-4 col-form-label">Albumin and
+                                        Globulin Ratio</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Albumin_and_Globulin_Ratio"
+                                               name="Albumin_and_Globulin_Ratio" required="required"
+                                               placeholder="Enter the Albumin and Globulin Ratio">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+                                        <button type="submit" class="btn btn-primary">Predict</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}

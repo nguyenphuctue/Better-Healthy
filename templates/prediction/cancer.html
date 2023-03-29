@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Bệnh ung thư</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
+                    <li class="breadcrumb-item">Dự đoán</li>
+                    <li class="breadcrumb-item active">Bệnh ung thư</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-md-8" style="float:none;margin:auto;">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Vui lòng điền thông tin phía dưới</h5>
+
+                            <form action="{% url 'healthApp:cancer_predict' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="row mb-3">
+                                    <label for="concave points_mean" class="col-sm-4 col-form-label">Mean of the Concave
+                                        Points</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" step=0.01 id="concave_points_mean"
+                                               name="concave_points_mean" required="required"
+                                               placeholder="Mean of the Concave Points">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="area_mean" class="col-sm-4 col-form-label">Mean of the Area</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" step="any" id="area_mean"
+                                               name="area_mean"
+                                               required="required" placeholder="Mean of the Area">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="radius_mean" class="col-sm-4 col-form-label">Mean of the Radius</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="radius_mean" name="radius_mean"
+                                               required="required"
+                                               placeholder="Mean of the radius">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="perimeter_mean" class="col-sm-4 col-form-label">Mean of the
+                                        Perimeters</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="perimeter_mean"
+                                               name="perimeter_mean"
+                                               required="required" placeholder="Mean of the Parameter">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="concavity_mean" class="col-sm-4 col-form-label">Mean of the
+                                        Concavity</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="concavity_mean"
+                                               name="concavity_mean"
+                                               required="required" placeholder="Mean of the concavity">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+                                        <button type="submit" class="btn btn-primary">Predict</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}

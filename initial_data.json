@@ -1,0 +1,13 @@
+[
+  {
+    "model": "healthyApp.post",
+    "pk": 1,
+    "fields": {
+      "user_id": "",
+      "title": "",
+      "post_image": "",
+      "content": "",
+      "category": ""
+    }
+  }
+]

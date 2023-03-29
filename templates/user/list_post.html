@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Bài viết của tôi</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    {#          <li class="breadcrumb-item">Components</li>#}
+                    <li class="breadcrumb-item active">Bài viết của tôi</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8" style="float:none;margin:auto;">
+                    <div class="row">
+                        {#                        <div class="col-12">#}
+                        <!-- Card with an image on left -->
+                        {% for p in page_posts %}
+                            <a href="/post/detail/{{ p.id }}">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="{{ p.post_image.url }}" class="img-fluid rounded-start img-thumbnail"
+                                                 style="height: 10em; width: 15em"
+                                                 alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ p.title }}</h5>
+                                                <p class="card-text text-truncate">{{ p.content }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End Card with an image on left -->
+                            </a>
+                        {% endfor %}
+                        {#                        </div>#}
+                    </div>
+                </div>
+                </div>
+                <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                {% if page_posts.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">Trang đầu</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="?page={{ page_posts.previous_page_number }}">Trước</a>
+                                    </li>
+                                {% endif %}
+                                <li class="page-item"><a class="page-link">Trang {{ page_posts.number }}
+                                    trên {{ page_posts.paginator.num_pages }}</a>
+                                </li>
+                                {% if page_posts.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_posts.next_page_number }}">Sau</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_posts.paginator.num_pages }}">Trang cuối</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}

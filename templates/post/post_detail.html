@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Post Detail</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Blogs</a></li>
+                    <li class="breadcrumb-item active">Post detail</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <section class="section">
+            <div class="row">
+                <div class="col-md-8" style="float:none;margin:auto;">
+                    <div class="card">
+                        {#                        <img src="{% static "assets/img/card.jpg" %}" class="card-img-top" alt="...">#}
+                        <img src="{{ post.post_image.url }}" class="card-img-top img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ post.title }}</h5>
+                            <p class="card-text" style="text-align: justify;">{{ post.content }}</p>
+                            {% if user.id == post.user_id.id %}
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        <a href="/post/edit_save/{{ post.id }}" style="color: white">Edit</a>
+                                    </button>
+                                    <button type="submit" class="btn btn-danger">
+                                        <a href="/post/delete/{{ post.id }}" style="color: white">Delete</a>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}

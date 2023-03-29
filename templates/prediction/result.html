@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Kết quả dự đoán</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
+                    <li class="breadcrumb-item">Dự đoán</li>
+                    <li class="breadcrumb-item active">Kết quả</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-md-8" style="float:none;margin:auto;">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Thông tin kết quả</h5>
+                            <p class="fst-italic">(Kết quả dự đooán chỉ mang tính chất tham khảo, bạn cần tìm đến các chuyên gia để biết rõ hơn)</p>
+                            {% if status == 0 %}
+                            <img src="{% static "img/bad_health.png" %}" class="img-fluid rounded mx-auto d-block" alt="...">
+                            {% else %}
+                            <img src="{% static "img/good_health.png" %}" class="img-fluid rounded mx-auto d-block" alt="...">
+                            {% endif %}
+                            <p class="text-center">{{ prediction }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    {% load static %}
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Bệnh tiểu đường</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
+                    <li class="breadcrumb-item">Dự đoán</li>
+                    <li class="breadcrumb-item active">Bệnh tiểu đường</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-md-8" style="float:none;margin:auto;">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Vui lòng điền thông tin phía dưới</h5>
+
+                            <form action="{% url 'healthApp:diabetes_predict' %}" method="post">
+                                {% csrf_token %}
+                                <div class="row mb-3">
+                                    <label for="Pregnancies" class="col-sm-4 col-form-label">No. of Pregnencies</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Pregnancies" name="Pregnancies"
+                                               required="required" placeholder="No. of Pregnencies">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Glucose" class="col-sm-4 col-form-label">Glucose Level</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" step="any" id="Glucose" name="Glucose"
+                                               required="required" placeholder="Glucose Level">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="radius_mean" class="col-sm-4 col-form-label">Mean of the Radius</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="radius_mean" name="radius_mean"
+                                               required="required"
+                                               placeholder="Mean of the radius">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="BloodPressure" class="col-sm-4 col-form-label">Current Blood
+                                        Pressure</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="BloodPressure"
+                                               name="BloodPressure" required="required"
+                                               placeholder="Current Blood Pressure">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="BMI" class="col-sm-4 col-form-label">Enter the Body Mass Index</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="BMI" name="BMI"
+                                               required="required" placeholder="Body Mass Index">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="DiabetesPedigreeFunction" class="col-sm-4 col-form-label">Diabetes
+                                        Pedigree Function</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="DiabetesPedigreeFunction"
+                                               name="DiabetesPedigreeFunction" required="required"
+                                               placeholder="Diabetes Pedigree Function">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Age" class="col-sm-4 col-form-label">Age</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="number" id="Age" name="Age"
+                                               required="required" placeholder="Age">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+                                        <button type="submit" class="btn btn-primary">Predict</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock main_content %}
